@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -14,8 +15,17 @@ class SocialiteController extends Controller
 
     // Redirección de facebook a la app web una vez autorizado el acceso a los datos del usuario
     public function callback() {
-        $user = Socialite::driver('facebook')->user();
+        $facebookUser = Socialite::driver('facebook')->user();
 
-        dd($user);
+        $user = User::updateOrCreate([
+            'facebook_id' => $facebookUser->id,
+        ], [
+            'name'        => $facebookUser->name,
+            'email'       => $facebookUser->email,
+        ]);
+
+        auth()->login($user); // Forma alternativa de hacer login con helper
+
+        return redirect()->to('/dashboard');
     }
 }

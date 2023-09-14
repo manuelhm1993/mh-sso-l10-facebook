@@ -25,6 +25,15 @@
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
             </div>
 
+            {{-- SSO con Facebook --}}
+            <div class="mt-4">
+                <a
+                    href="{{ route('auth.redirect') }}"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full block text-center">
+                    Iniciar sesión con Facebook
+                </a>
+            </div>
+
             <div class="block mt-4">
                 <label for="remember_me" class="flex items-center">
                     <x-checkbox id="remember_me" name="remember" />
