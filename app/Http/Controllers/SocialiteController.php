@@ -15,5 +15,7 @@ class SocialiteController extends Controller
     // Redirección de facebook a la app web una vez autorizado el acceso a los datos del usuario
     public function callback() {
         $user = Socialite::driver('facebook')->user();
+
+        dd($user);
     }
 }

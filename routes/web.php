@@ -31,4 +31,4 @@ Route::middleware([
 
 // -------------------- SSO
 Route::get('/auth/redirect', [SocialiteController::class, 'redirect'])->name('auth.redirect');
-Route::get('/auth/callback', [SocialiteController::class, 'callback'])->name('auth.redirect');
+Route::get('/auth/callback', [SocialiteController::class, 'callback'])->name('auth.callback');
