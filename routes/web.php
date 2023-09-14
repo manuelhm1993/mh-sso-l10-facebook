@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+// -------------------- SSO
+Route::get('/auth/redirect', [SocialiteController::class, 'redirect'])->name('auth.redirect');
+Route::get('/auth/callback', [SocialiteController::class, 'callback'])->name('auth.redirect');
